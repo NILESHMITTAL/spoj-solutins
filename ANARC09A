@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {ios_base::sync_with_stdio(false);cin.tie(0);
+	int i,c,ans,k=1;
+	char s[2002];
+	cin>>s;
+	int l=strlen(s);
+	while(s[0]!='-')
+	{c=0,ans=0;
+	 l=strlen(s);
+	for(i=0;i<l;i++)
+	{
+	   if(s[i]=='{')
+	   {c++;
+	   //cout<<c;
+	   }
+	   else
+	   {
+	   	  if(s[i]=='}'&& c==0)
+	   	  {
+	   	  	c++;
+	   	  	ans+=1;
+	   	  //	cout<<ans;
+	   	  }
+	   	  else
+	   	  c--;
+	   }
+	   	
+	   }
+	   ans+=c/2;
+	   cout<<k<<". "<<ans<<endl;;
+	   cin>>s;
+	   k++;
+	}
+	return 0;
+}
