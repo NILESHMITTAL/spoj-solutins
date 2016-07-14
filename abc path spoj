@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+char a[51][51];
+int vis[51][51];
+int h,w,ans=0;
+void solve(int x,int y,int len)
+{
+	int xm[8]={0,0,1,1,1,-1,-1,-1};
+	int ym[8]={1,-1,0,1,-1,0,-1,1};
+	
+	ans=max(ans,len);
+	for(int i=0;i<8;i++)
+   {  
+		int nx=x+xm[i];
+		int ny=y+ym[i];
+		
+		if(nx>=0 && nx<h &&ny>=0 && ny<w && vis[nx][ny]==-1)
+		{
+			if(a[nx][ny]==a[x][y]+1)
+			{
+				vis[nx][ny]=1;
+				solve(nx,ny,len+1);
+			}
+		}
+	
+	
+	
+	}
+}
+int main() {
+	// your code goes here
+	int cc=1;
+	cin>>h>>w;
+	while(h&&w)
+	{
+	int i,j;
+	for(i=0;i<h;i++)
+	for(j=0;j<w;j++)
+	vis[i][j]=-1;
+	
+	for(i=0;i<h;i++)
+	for(j=0;j<w;j++)
+	cin>>a[i][j];
+	 
+	 for(i=0;i<h;i++)
+	 {
+	 	for(j=0;j<w;j++)
+	 	{
+	 		if(a[i][j]=='A')
+	 		{
+	 			vis[i][j]=1;
+	 			solve(i,j,1);
+	 		}
+	 	}
+	 }
+	 cout<<"Case "<<cc<<": "<<ans<<endl;
+	 cin>>h>>w;
+	 cc++;
+	 ans=0;
+}
+	return 0;
+}
