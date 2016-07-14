@@ -1,0 +1,50 @@
+#include<stdio.h>
+
+int main()
+{int prime[2705],i,j,ap[2700],k=0,c=0,h=0,ans[2700],n,t;
+for(i=0;i<=2700;i++)
+{prime[i]=1;
+}
+prime[0]=0;
+prime[1]=0;
+for(i=2;i*i<=2700;i++)
+
+{if(prime[i]==1)
+  {for(j=2;i*j<=2700;j++)
+  {prime[i*j]=0;
+  }
+	
+	
+  } 
+}
+
+for(i=0;i<2700;i++)
+{if(prime[i]==1)
+  ap[k++]=i;
+}
+
+for(i=2;i<2700;i++)
+{c=0;
+	for(j=0;j<k;j++)
+	{
+		if(i%ap[j]==0)
+		c++;
+		if(c>=3)
+		{
+			ans[h++]=i;
+			break;
+		}
+	}
+	
+}
+
+//for(i=0;i<h;i++)
+//printf("%d\n",ans[i]);
+scanf("%d",&t);
+while(t--)
+{
+	scanf("%d",&n);
+	printf("%d\n",ans[n-1]);
+}
+   
+}
